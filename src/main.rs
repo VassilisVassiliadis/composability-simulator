@@ -108,8 +108,10 @@ fn main() -> Result<()> {
              delta.as_secs_f32(), sched.jobs_done.len(), sched.now);
 
     if sched.has_unschedulable() {
-        eprintln!("There were {} unschedulable jobs", sched.jobs_queuing.len());
-
+        println!("There were {} unschedulable jobs", sched.jobs_queuing.len());
+        println!("#uid:usize;cores:f32;memory:f32;duration:f32;\
+            can_borrow:y/n;time_created:f32;time_started:f32;time_done:f32;uid_node_cores:usize;\
+            [uid_node_memory:usize;memory_alloc:f32]+");
         for j in &sched.jobs_queuing {
             println!("{}", j);
         }
